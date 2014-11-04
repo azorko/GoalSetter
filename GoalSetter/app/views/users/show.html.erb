@@ -1,0 +1,30 @@
+<h1><%= @user.username %></h1>
+
+<p>Goals</p>
+<% @user.goals.each do |goal| %>
+  <% if goal.pub || current_user.id == goal.user_id %>
+    <p><%= goal.title %> <%=  "- completed" if goal.completed %></p>
+		
+    <% if current_user.id == goal.user_id %>
+      <%= link_to "Edit", edit_goal_url(goal) %>
+      <%= button_to "Remove", goal_url(goal), method: :delete %>
+    
+    
+    <%= render "comments/goal", commentable_type: "Goal", commentable_id: goal.id, goal: goal %>
+    
+    <% end %>
+  <% end %>
+<% end %>
+
+
+<%= link_to "New Goal", new_goal_url %>
+
+<h4>User Comments</h4>
+<% @user.comments.each do |comment| %>
+  <%= User.find(comment.user_id).username %> 
+  
+  <%= comment.body %>
+  <br>
+<% end %>
+
+<%= render "comments/new", commentable_type: "User", commentable_id: @user.id %>

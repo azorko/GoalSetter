@@ -1,0 +1,50 @@
+<h1>Edit Goal </h1>
+
+<form action="<%= goal_url(@goal) %>" method="post">
+  
+  <input type="hidden" name="_method" value="put">
+
+  <input type='hidden'
+              name='authenticity_token'
+              value='<%= form_authenticity_token %>'>
+
+  <label>
+    Title
+    <input type="text" name="goal[title]" value="<%= @goal.title %>">
+  </label>
+  <br>
+  
+  <label>Set Public
+    <select name="goal[pub]">
+      <option
+      <%= "selected" if @goal.pub == true %>
+      value="true">
+      Public
+    </option>
+      <option
+      <%= "selected" if @goal.pub == false %>
+      value="false">
+      Private
+    </option>
+  </select>
+</label>
+<br>
+  
+  <label>Completed
+    <select name="goal[completed]">
+      <option
+      <%= "selected" if @goal.completed == true %>
+      value="true">
+      Completed
+    </option>
+      <option
+      <%= "selected" if @goal.completed == false %>
+      value="false">
+      Not Completed
+    </option>
+  </select>
+</label>
+
+<br>
+<input type="submit" value="Update Goal">
+</form>

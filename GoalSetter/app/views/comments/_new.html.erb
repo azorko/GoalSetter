@@ -1,0 +1,20 @@
+<h4> New Comment</h4>
+
+<form action="<%= comments_url %>" method="post">
+
+  <input type='hidden'
+              name='authenticity_token'
+              value='<%= form_authenticity_token %>'>
+
+  <label>
+    Body
+    <input type="text" name="comment[body]" id="body_user">
+  </label>
+  <br>
+  
+  <input type="hidden" name="comment[commentable_id]" value="<%= commentable_id %>">
+  
+  <input type="hidden" name="comment[commentable_type]" value="<%= commentable_type %>">
+  
+  <input type="submit" value="Submit" id="comment_user">
+</form>

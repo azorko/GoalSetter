@@ -1,0 +1,30 @@
+
+
+<h4>Goal Comments</h4>
+<% goal.comments.each do |comment| %>
+  <%= User.find(comment.user_id).username %> 
+  
+  <%= comment.body %>
+  <br>
+<% end %>
+
+<h4> New Goal Comment</h4>
+
+<form action="<%= comments_url %>" method="post">
+
+  <input type='hidden'
+              name='authenticity_token'
+              value='<%= form_authenticity_token %>'>
+
+  <label>
+    Body
+    <input type="text" name="comment[body]" id="body_goal">
+  </label>
+  <br>
+  
+  <input type="hidden" name="comment[commentable_id]" value="<%= commentable_id %>">
+  
+  <input type="hidden" name="comment[commentable_type]" value="<%= commentable_type %>">
+  
+  <input type="submit" value="Submit" id="comment_goal">
+</form>

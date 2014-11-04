@@ -6,7 +6,20 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<header>
+  <% if logged_in? %>
+    <%= current_user.username %>
+    <%= button_to "Sign Out", session_url(current_user), method: :delete %>
+		<%= link_to "All Users", users_url %>
+  <%else%>
+    <%= link_to "Sign In", new_session_url %>
+    <%= link_to "Sign Up", new_user_url %>
+  <% end %>
+</header>
+
 <body>
+
+  <%= flash[:errors].join("\n") if flash[:errors]%>
 
 <%= yield %>
 
