@@ -2,6 +2,6 @@ Project: Goal Tracker app
 
 Focus:
 
-Behavior-Driven Development/Test-Driven Development in a Rails app
+-Behavior-Driven Development/Test-Driven Development in a Rails app
 
-RSpec, Capybara, FactoryGirl, Faker
+-RSpec, Capybara, FactoryGirl, Faker
